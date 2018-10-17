@@ -1,27 +1,98 @@
-## QUESTÃO 4 ##
-#
-# Escreva um programa que leia uma data do usuário e calcule seu sucessor imediato.
-# Por exemplo, se o usuário inserir valores que representem 2013-11-18, seu programa 
-# deve exibir uma mensagem indicando que o dia imediatamente após 2013-11-18 é 
-# 2013-11-19. Se o usuário inserir valores que representem 2013-11-30, o programa deve 
-# indicar que o dia seguinte é 2013-12-01. Se o usuário inserir valores que representem 
-# 2013-12-31 então o programa deve indicar que o dia seguinte é 2014-01-01. A data 
-# será inserida em formato numérico com três instruções de entrada separadas; 
-# uma para o ano, uma para o mês e uma para o dia. Certifique-se de que o seu programa 
-# funciona corretamente para anos bissextos.
-##
-
-
-##
-# A sua resposta da questão deve ser desenvolvida dentro da função main()!!! 
-# Deve-se substituir o comado print existente pelo código da solução.
-# Para a correta execução do programa, a estrutura atual deve ser mantida,
-# substituindo apenas o comando print(questão...) existente.
-##
 def main():
-    print("questao 4")
+	ano = int(input("Insira o ano: "))
+	mes = int(input("Insira o mes: "))
+	dia = int(input("Insira o dia: "))
+	anoN = ano
+	mesN = mes
+	diaN = dia
+	bi = False
 
+	if dia < 1 or dia > 31 or mes < 1 or mes > 12:
+		print("Mes ou dia invalidos!")
 
-    
+	else:
+
+		if ano % 4 == 0 and (ano % 100 != 0 or ano % 400 == 0):
+			bi = True
+
+		if bi == False:
+			
+			if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+				if dia == 31:
+					diaN = 1
+					mesN+=1
+				else:
+					diaN = dia+1
+
+			if mes == 2:
+				if dia == 28:
+					diaN = 1
+					mesN+=1
+				else:
+					diaN = dia+1
+
+			if mes == 4 or mes == 6 or mes == 9 or mes == 11:
+				if dia == 30:
+					diaN = 1
+					mesN+=1
+				else:
+					diaN = dia+1
+
+			if mesN == 13:
+				anoN+= 1
+				diaN = 1
+				mesN = 1
+
+			if(mesN == 1 or mesN< 10):
+				if diaN == 1 or diaN<10:
+					print(str(anoN)+"-0"+str(mesN)+"-0"+str(diaN))
+				else:
+					print(str(anoN)+"-0"+str(mesN)+"-"+str(diaN))
+			else:
+				if diaN == 1 or diaN<10:
+					print(str(anoN)+"-"+str(mesN)+"-0"+str(diaN))
+				else:
+					print(str(anoN)+"-"+str(mesN)+"-"+str(diaN))
+
+		if bi == True:
+			if(dia>29):
+				print("Fevereiro não tem esse dia!")
+			else:
+				if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+					if dia == 31:
+						diaN = 1
+						mesN+=1
+					else:
+						diaN = dia+1
+
+				if mes == 2:
+					if dia == 29:
+						diaN = 1
+						mesN+=1
+					else:
+						diaN = dia+1
+
+				if mes == 4 or mes == 6 or mes == 9 or mes == 11:
+					if dia == 30:
+						diaN = 1
+						mesN+=1
+					else:
+						diaN = dia+1
+
+				if mesN == 13:
+					anoN+= 1
+					diaN = 1
+					mesN = 1
+
+				if(mesN == 1 or mesN< 10):
+					if diaN == 1 or diaN<10:
+						print(str(anoN)+"-0"+str(mesN)+"-0"+str(diaN))
+					else:
+						print(str(anoN)+"-0"+str(mesN)+"-"+str(diaN))
+				else:
+					if diaN == 1 or diaN<10:
+						print(str(anoN)+"-"+str(mesN)+"-0"+str(diaN))
+					else:
+						print(str(anoN)+"-"+str(mesN)+"-"+str(diaN))
 if __name__ == '__main__':
     main()
