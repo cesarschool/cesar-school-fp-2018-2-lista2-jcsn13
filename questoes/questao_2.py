@@ -5,25 +5,24 @@ def main():
 	contadorH = 0
 
 	while dir != '':
-		dir = input("Insira uma direção e quantidade de passos: ").lower()
-		divisor = dir.split(" ") 
+		dir = input("Insira uma direção e quantidade de passos: ").lower() 
 		
 		if dir[:4]=="cima" and dir[4]== " ":
 			print("Sua distancia foi adicionada")
-			contadorV+=int(divisor[1])
+			contadorV+=int(dir[5:])
 
 		elif dir[:5]=="baixo" and dir[5]== " ":
 			print("Sua distancia foi adicionada")
-			contadorV-=int(divisor[1])
+			contadorV-=int(dir[6:])
 
 
 		elif dir[:8]=="esquerda" and dir[8]== " ":
 			print("Sua distancia foi adicionada")
-			contadorH+=int(divisor[1])
+			contadorH+=int(dir[9:])
 
 		elif dir[:7]=="direita" and dir[7]== " ":
 			print("Sua distancia foi adicionada")
-			contadorH-=int(divisor[1])
+			contadorH-=int(dir[8:])
 		
 		elif dir == "":
 			break
